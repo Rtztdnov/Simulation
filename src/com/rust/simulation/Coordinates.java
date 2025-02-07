@@ -1,6 +1,7 @@
 package com.rust.simulation;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Coordinates {
 
@@ -11,6 +12,16 @@ public class Coordinates {
         this.column = column;
         this.row = row;
     }
+
+    public Coordinates() {
+    }
+
+    public Coordinates getRandomCoordinates(int column, int row) {
+        Random random = new Random();
+        Coordinates coordinates = new Coordinates(random.nextInt(column) + 1, random.nextInt(row) + 1);
+        return coordinates;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
