@@ -1,23 +1,20 @@
 package com.rust.simulation;
 
-import com.rust.simulation.Entity.Grass;
-import com.rust.simulation.Entity.Predator;
-import com.rust.simulation.Entity.Prey;
-import com.rust.simulation.Entity.Rock;
-
-import java.util.HashMap;
-
 public class Simulation {
 
-    private WorldMap wm = new WorldMap(50, 20);
-    private InitAction initAction = new InitAction();
 
     public void startSimulation() {
+        WorldMap worldMap = new WorldMap(20, 20);
+        InitAction initAction = new InitAction(worldMap);
+        initAction.innitWorldMap(3,3,10,0);
+
+        Movement movement = new Movement(worldMap);
         while (true) {
-            initAction.innitWM(wm, 10, 10, 10, 10);
-            Renderer renderer = new Renderer(wm);
+            Renderer renderer = new Renderer(worldMap);
             renderer.renderMap();
             System.out.println();
+            movement.moveEntities();
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

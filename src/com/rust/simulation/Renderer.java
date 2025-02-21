@@ -9,7 +9,7 @@ public class Renderer {
     private int maxColumn;
     private int maxRow;
     private WorldMap worldMap;
-    private final String groundSprite = "\u2B1C";
+    private final String groundSprite = "\u2B1C";  	//black square "\u2B1B"
     private final String predatorSprite = "\uD83E\uDD85";
     private final String preySprite = "\uD83D\uDC00";
     private final String rockSprite = "\uD83E\uDEA8";
@@ -23,7 +23,7 @@ public class Renderer {
     }
 
     public void renderMap() {
-        HashMap<Coordinates, Entity> entities = worldMap.getWorldMap();
+        HashMap<Coordinates, Entity> entities = worldMap.getEntitiesMap();
         StringBuilder line = new StringBuilder(groundSprite);
 
             for (int row = 1; row <= maxRow; row++) {
