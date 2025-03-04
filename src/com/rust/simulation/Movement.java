@@ -1,9 +1,6 @@
 package com.rust.simulation;
 
-import com.rust.simulation.Entity.Creature;
-import com.rust.simulation.Entity.Entity;
-import com.rust.simulation.Entity.Predator;
-import com.rust.simulation.Entity.Prey;
+import com.rust.simulation.Entity.*;
 
 import java.util.*;
 
@@ -17,9 +14,9 @@ public class Movement {
     }
 
     public void moveEntities() {
-        int numberofCreatures = getNumberOfCreatures();
+        int numberOfCreatures = getNumberOfCreatures();
         HashMap<Coordinates, Creature> movedCreatures = new HashMap<>();
-        while (numberofCreatures != movedCreatures.size()) {
+        while (numberOfCreatures != movedCreatures.size()) {
             Set<Coordinates> entitiesCoordinates = entitiesMap.keySet();
             Iterator<Coordinates> iterator = entitiesCoordinates.iterator();
             Coordinates coordinates = null;
@@ -46,7 +43,25 @@ public class Movement {
                 System.out.println(e.getMessage());
             }
         }
-        worldMap.setEntitiesMap(entitiesMap);
+        removeCorpses();
+//        worldMap.setEntitiesMap(entitiesMap);
+    }
+
+    public void removeCorpses (){
+        Set<Coordinates> entitiesCoordinates = entitiesMap.keySet();
+        Iterator<Coordinates> iterator = entitiesCoordinates.iterator();
+        while (iterator.hasNext()) {
+            Coordinates coordinates = iterator.next();
+            if(entitiesMap.get(coordinates) instanceof Creature){
+                if (((Creature) entitiesMap.get(coordinates)).getHp() < 0){
+                    iterator.remove();
+                }
+            }else if(entitiesMap.get(coordinates) instanceof Grass){
+                if (((Grass) entitiesMap.get(coordinates)).getHP() < 0){
+                    iterator.remove();
+                }
+            }
+        }
     }
 
     public int getNumberOfCreatures() {

@@ -6,7 +6,7 @@ public class Simulation {
     public void startSimulation() {
         WorldMap worldMap = new WorldMap(20, 20);
         InitAction initAction = new InitAction(worldMap);
-        initAction.innitWorldMap(3,3,10,0);
+        initAction.innitWorldMap(2,6,7,5);
 
         Movement movement = new Movement(worldMap);
         while (true) {
