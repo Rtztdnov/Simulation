@@ -1,4 +1,4 @@
-package com.rust.simulation.Entity;
+package com.rust.simulation.entity;
 
 import com.rust.simulation.Coordinates;
 import com.rust.simulation.WorldMap;
@@ -34,4 +34,18 @@ public abstract class Creature extends Entity {
     }
 
     public abstract Coordinates makeMove(Coordinates coordinates, WorldMap worldMap);
+
+    public abstract void eating (LinkedList<Coordinates> way, WorldMap worldMap);
+
+    public Coordinates moving (Coordinates coordinates, LinkedList<Coordinates> way, WorldMap worldMap) {
+
+        if (way.isEmpty()) {
+            return coordinates;
+        } else if ((way.size() == getSpeed() + 1) || (way.size() == 2)) {
+            eating(way, worldMap);
+            return coordinates;
+        } else {
+            return way.get(getSpeed());
+        }
+    }
 }

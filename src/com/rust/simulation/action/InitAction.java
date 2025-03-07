@@ -1,8 +1,6 @@
-package com.rust.simulation;
+package com.rust.simulation.action;
 
-import com.rust.simulation.Entity.*;
-
-import java.util.HashMap;
+import com.rust.simulation.WorldMap;
 
 public class InitAction extends Action {
 

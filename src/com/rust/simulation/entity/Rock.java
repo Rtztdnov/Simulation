@@ -1,4 +1,4 @@
-package com.rust.simulation.Entity;
+package com.rust.simulation.entity;
 
 public class Rock extends Entity {
 }

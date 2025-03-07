@@ -1,6 +1,6 @@
 package com.rust.simulation;
 
-import com.rust.simulation.Entity.Entity;
+import com.rust.simulation.entity.Entity;
 
 import java.util.*;
 
@@ -17,6 +17,7 @@ public class BfsAlgorithm {
             ArrayList<Coordinates> neighbours = getneighbours(currentCoordinates);
             for (Coordinates c : neighbours) {
                 if (!visited.contains(c)) {
+                    visited.add(currentCoordinates);
                     if (!inheritorChain.containsKey(c)) {
                         inheritorChain.put(c, currentCoordinates);
                         if (entitiesMap.containsKey(c)) {
@@ -29,7 +30,6 @@ public class BfsAlgorithm {
                     }
                 }
             }
-            visited.add(currentCoordinates);
         }
         LinkedList<Coordinates> emptyWay = new LinkedList<>();
         return emptyWay;

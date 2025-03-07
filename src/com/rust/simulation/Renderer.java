@@ -1,6 +1,6 @@
 package com.rust.simulation;
 
-import com.rust.simulation.Entity.*;
+import com.rust.simulation.entity.*;
 
 import java.util.HashMap;
 
