@@ -5,7 +5,7 @@ import com.rust.simulation.WorldMap;
 
 import java.util.LinkedList;
 
-public abstract class Creature extends Entity {
+public abstract class Creature extends Entity implements Damageable {
 
     private int speed;
     private int hp;
@@ -35,14 +35,14 @@ public abstract class Creature extends Entity {
 
     public abstract Coordinates makeMove(Coordinates coordinates, WorldMap worldMap);
 
-    public abstract void eating (LinkedList<Coordinates> way, WorldMap worldMap);
+    public abstract void attack(LinkedList<Coordinates> way, WorldMap worldMap);
 
     public Coordinates moving (Coordinates coordinates, LinkedList<Coordinates> way, WorldMap worldMap) {
 
         if (way.isEmpty()) {
             return coordinates;
         } else if ((way.size() == getSpeed() + 1) || (way.size() == 2)) {
-            eating(way, worldMap);
+            attack(way, worldMap);
             return coordinates;
         } else {
             return way.get(getSpeed());

@@ -1,6 +1,6 @@
 package com.rust.simulation.entity;
 
-import com.rust.simulation.BfsAlgorithm;
+import com.rust.simulation.BFSAlgorithm;
 import com.rust.simulation.Coordinates;
 import com.rust.simulation.WorldMap;
 
@@ -13,19 +13,19 @@ public class Prey extends Creature {
     }
 
     @Override
-    public void eating(LinkedList<Coordinates> way, WorldMap worldMap) {
+    public void attack(LinkedList<Coordinates> way, WorldMap worldMap) {
 
         Coordinates target = way.getLast();
         if (worldMap.getEntitiesMap().get(target) instanceof Grass) {
             ((Grass) worldMap.getEntitiesMap().get(target)).takeDamage(getPower());
         }
-        System.out.println("ATTACKING");
+//        System.out.println("ATTACKING");
     }
 
     @Override
     public Coordinates makeMove(Coordinates coordinates, WorldMap worldMap) {
 
-        BfsAlgorithm bfsAlgorithm = new BfsAlgorithm();
+        BFSAlgorithm bfsAlgorithm = new BFSAlgorithm();
         LinkedList<Coordinates> way = bfsAlgorithm.findTheWay(coordinates, worldMap, Grass.class);
 
         return moving(coordinates, way, worldMap);

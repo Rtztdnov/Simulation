@@ -4,11 +4,11 @@ import com.rust.simulation.Coordinates;
 import com.rust.simulation.WorldMap;
 import com.rust.simulation.entity.*;
 
-public class Action {
+public abstract class Action {
 
     public void predatorFactory (WorldMap worldMap, int amount) {
         for (int i = 0; i < amount; i++) {
-            Predator predator = new Predator(2, 100, 50);
+            Predator predator = new Predator(2, 100, 100);
             addEntity(worldMap, predator);
         }
     }
@@ -29,15 +29,25 @@ public class Action {
 
     public void rockFactory (WorldMap worldMap, int amount) {
         for (int i = 0; i < amount; i++) {
+//            Rock rock = null;
             Rock rock = new Rock();
             addEntity(worldMap, rock);
         }
     }
 
     public void addEntity (WorldMap worldMap, Entity entity) {
-        Coordinates coordinates = new Coordinates().getRandomCoordinates(worldMap.getColumn(), worldMap.getRow());
-        if (!worldMap.getEntitiesMap().containsKey(coordinates)) {
-            worldMap.getEntitiesMap().put(coordinates, entity);
+        while (true){
+            Coordinates coordinates = new Coordinates().getRandomCoordinates(worldMap.getColumn(), worldMap.getRow());
+            if (entity != null && coordinates != null) {
+                if (!worldMap.getEntitiesMap().containsKey(coordinates)) {
+                    worldMap.getEntitiesMap().put(coordinates, entity);
+                    break;
+                }
+            }else {
+                throw new IllegalArgumentException("Null value detected");
+            }
+
         }
+
     }
 }

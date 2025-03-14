@@ -4,7 +4,7 @@ import com.rust.simulation.entity.Entity;
 
 import java.util.*;
 
-public class BfsAlgorithm {
+public class BFSAlgorithm {
 
     public <Food> LinkedList<Coordinates> findTheWay(Coordinates firstCoordinate, WorldMap worldMap, Class<Food> food) {
         HashMap<Coordinates, Entity> entitiesMap = worldMap.getEntitiesMap();

@@ -16,9 +16,9 @@ public class Coordinates {
     public Coordinates() {
     }
 
-    public Coordinates getRandomCoordinates(int column, int row) {
+    public Coordinates getRandomCoordinates(int maxColumn, int maxRow) {
         Random random = new Random();
-        Coordinates coordinates = new Coordinates(random.nextInt(column) + 1, random.nextInt(row) + 1);
+        Coordinates coordinates = new Coordinates(random.nextInt(maxColumn) + 1, random.nextInt(maxRow) + 1);
         return coordinates;
     }
 

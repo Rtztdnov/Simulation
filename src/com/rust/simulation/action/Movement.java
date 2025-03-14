@@ -30,38 +30,15 @@ public class Movement {
                     Creature creature = (Creature) entity;
                     Coordinates newCoordinates = creature.makeMove(coordinates, worldMap);
                     coordinates = newCoordinates;
-                    try {
                     movedCreatures.put(newCoordinates, (Creature) entity);
                     iterator.remove();
-                    } catch (NullPointerException e) {
-                        System.out.println(e.getMessage());
-                    }
                     break;
                 }
             }
-            try {
-            entitiesMap.put(coordinates, entity);
-            } catch (NullPointerException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        removeCorpses();
-//        worldMap.setEntitiesMap(entitiesMap);
-    }
-
-    public void removeCorpses (){
-        Set<Coordinates> entitiesCoordinates = entitiesMap.keySet();
-        Iterator<Coordinates> iterator = entitiesCoordinates.iterator();
-        while (iterator.hasNext()) {
-            Coordinates coordinates = iterator.next();
-            if(entitiesMap.get(coordinates) instanceof Creature){
-                if (((Creature) entitiesMap.get(coordinates)).getHp() < 0){
-                    iterator.remove();
-                }
-            }else if(entitiesMap.get(coordinates) instanceof Grass){
-                if (((Grass) entitiesMap.get(coordinates)).getHP() < 0){
-                    iterator.remove();
-                }
+            if (entity != null && coordinates != null) {
+                entitiesMap.put(coordinates, entity);
+            }else {
+                throw new IllegalArgumentException("Null value detected");
             }
         }
     }
