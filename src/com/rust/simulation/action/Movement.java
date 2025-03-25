@@ -43,7 +43,7 @@ public class Movement {
         }
     }
 
-    public int getNumberOfCreatures() {
+    private int getNumberOfCreatures() {
         int numberOfCreatures = 0;
         Set<Coordinates> entitiesCoordinates = entitiesMap.keySet();
         Iterator<Coordinates> iterator = entitiesCoordinates.iterator();

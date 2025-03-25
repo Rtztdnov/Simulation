@@ -2,8 +2,12 @@ package com.rust.simulation;
 
 public class Main {
     public static void main(String[] args) {
-      Simulation simulation = new Simulation();
-      simulation.startSimulation();
+        Menu menu = new Menu();
+        if (menu.start()) {
+
+            Simulation simulation = new Simulation();
+            simulation.startSimulation();
+        }
 
     }
 }

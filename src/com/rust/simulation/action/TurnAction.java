@@ -50,7 +50,7 @@ public class TurnAction extends Action {
         }
     }
 
-    public void addMoreEntities (){
+    private void addMoreEntities (){
         countingEntities();
         if (amountOfPredators == 0){
             predatorFactory(worldMap, worldMap.getInitAmountOfPredators());
@@ -67,7 +67,7 @@ public class TurnAction extends Action {
 
     }
 
-    public void removeCorpses (){
+    private void removeCorpses (){
         Set<Coordinates> entitiesCoordinates = worldMap.getEntitiesMap().keySet();
         Iterator<Coordinates> iterator = entitiesCoordinates.iterator();
         while (iterator.hasNext()) {

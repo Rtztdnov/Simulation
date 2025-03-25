@@ -19,7 +19,6 @@ public class Prey extends Creature {
         if (worldMap.getEntitiesMap().get(target) instanceof Grass) {
             ((Grass) worldMap.getEntitiesMap().get(target)).takeDamage(getPower());
         }
-//        System.out.println("ATTACKING");
     }
 
     @Override
