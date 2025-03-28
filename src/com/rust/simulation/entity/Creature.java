@@ -32,8 +32,8 @@ public abstract class Creature extends Entity implements Damageable {
     public void takeDamage(int damage) {
         hp -= damage;
     }
-//TODO rename makeMove & moving
-    public abstract Coordinates makeMove(Coordinates coordinates, WorldMap worldMap);
+
+    public abstract Coordinates getMove(Coordinates coordinates, WorldMap worldMap);
 
     public abstract void attack(LinkedList<Coordinates> way, WorldMap worldMap);
 

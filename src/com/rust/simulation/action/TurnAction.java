@@ -16,26 +16,21 @@ public class TurnAction extends Action {
 
     private WorldMap worldMap;
     private Movement movement;
-    int amountOfPredators = 0;
-    int amountOfPrey = 0;
-    int amountOfGrass = 0;
+    private InitAction initAction;
+    private int amountOfPredators = 0;
+    private int amountOfPrey = 0;
+    private int amountOfGrass = 0;
 
-    //    TODO исправить конструктор
-    public TurnAction(WorldMap worldMap) {
+    public TurnAction(WorldMap worldMap, InitAction initAction) {
         this.worldMap = worldMap;
         this.movement = new Movement(worldMap);
+        this.initAction = initAction;
     }
     public void turn (){
         movement.moveEntities();
         removeCorpses();
         addMoreEntities();
     }
-
-//    public TurnAction (WorldMap worldMap, int initAmountOfPredators, int initAmountOfPrey, int initAmountOfGrass, int initAmountOfRocks){
-//        super(worldMap, initAmountOfPredators, initAmountOfPrey, initAmountOfGrass, initAmountOfRocks);
-//    }
-//
-
 
     private void countingEntities (){
         Collection<Entity> entities = worldMap.getEntitiesMap().values();
@@ -53,13 +48,13 @@ public class TurnAction extends Action {
     private void addMoreEntities (){
         countingEntities();
         if (amountOfPredators == 0){
-            predatorFactory(worldMap, worldMap.getInitAmountOfPredators());
+            predatorFactory(worldMap, initAction.getInitAmountOfPredators());
         }
         if (amountOfPrey == 0){
-            preyFactory(worldMap, worldMap.getInitAmountOfPrey());
+            preyFactory(worldMap, initAction.getInitAmountOfPrey());
         }
         if (amountOfGrass == 0){
-            grassFactory(worldMap, worldMap.getInitAmountOfGrass());
+            grassFactory(worldMap, initAction.getInitAmountOfGrass());
         }
         amountOfPredators = 0;
         amountOfPrey = 0;

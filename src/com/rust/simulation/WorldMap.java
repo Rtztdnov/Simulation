@@ -9,19 +9,10 @@ public class WorldMap {
     public static int column;
     public static int row;
     private HashMap<Coordinates, Entity> entitiesMap = new HashMap<>();
-    private int initAmountOfPredators;
-    private int initAmountOfPrey;
-    private int initAmountOfGrass;
-    private int initAmountOfRocks;
 
-    public WorldMap(int column, int row, int initAmountOfPredators, int initAmountOfPrey,
-                    int initAmountOfGrass, int initAmountOfRocks) {
+    public WorldMap(int column, int row) {
         this.column = column;
         this.row = row;
-        this.initAmountOfPredators = initAmountOfPredators;
-        this.initAmountOfPrey = initAmountOfPrey;
-        this.initAmountOfGrass = initAmountOfGrass;
-        this.initAmountOfRocks = initAmountOfRocks;
     }
 
     public int getRow() {
@@ -36,19 +27,56 @@ public class WorldMap {
         return entitiesMap;
     }
 
-    public int getInitAmountOfPredators() {
-        return initAmountOfPredators;
+    public Entity getEntity(Coordinates coordinates) {
+        return entitiesMap.get(coordinates);
     }
 
-    public int getInitAmountOfPrey() {
-        return initAmountOfPrey;
+    public void removeEntity(Coordinates coordinates) {
+        entitiesMap.remove(coordinates);
     }
 
-    public int getInitAmountOfGrass() {
-        return initAmountOfGrass;
+    public void moveEntity(Entity entity, Coordinates from, Coordinates to) {
+        removeEntity(from);
+        addEntity(entity, to);
     }
 
-    public int getInitAmountOfRocks() {
-        return initAmountOfRocks;
+    public void addEntity(Entity entity, Coordinates coordinates) {
+
+        if (entity != null && coordinates != null) {
+            if (!entitiesMap.containsKey(coordinates)) {
+                entitiesMap.put(coordinates, entity);
+            } else {
+                throw new IllegalArgumentException("Invalid coordinates");
+            }
+        } else {
+            throw new NullPointerException("Null value detected");
+        }
+    }
+
+    public void addEntityRandomCoordinates(Entity entity) {
+        while (true) {
+            Coordinates coordinates = new Coordinates().getRandomCoordinates(column, row);
+            if (entity != null && coordinates != null) {
+                if (!entitiesMap.containsKey(coordinates)) {
+                    entitiesMap.put(coordinates, entity);
+                    break;
+                }
+            } else {
+                throw new NullPointerException("Null value detected");
+            }
+        }
+    }
+
+    public int getNumberOfCreatures() {
+        int numberOfCreatures = 0;
+        Set<Coordinates> entitiesCoordinates = entitiesMap.keySet();
+        Iterator<Coordinates> iterator = entitiesCoordinates.iterator();
+        while (iterator.hasNext()) {
+            Coordinates coordinates = iterator.next();
+            if (entitiesMap.get(coordinates) instanceof Creature) {
+                numberOfCreatures++;
+            }
+        }
+        return numberOfCreatures;
     }
 }

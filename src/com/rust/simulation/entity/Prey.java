@@ -22,7 +22,7 @@ public class Prey extends Creature {
     }
 
     @Override
-    public Coordinates makeMove(Coordinates coordinates, WorldMap worldMap) {
+    public Coordinates getMove(Coordinates coordinates, WorldMap worldMap) {
 
         BFSAlgorithm bfsAlgorithm = new BFSAlgorithm();
         LinkedList<Coordinates> way = bfsAlgorithm.findTheWay(coordinates, worldMap, Grass.class);
