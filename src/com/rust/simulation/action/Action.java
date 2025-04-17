@@ -8,7 +8,7 @@ public abstract class Action {
 
     public void predatorFactory (WorldMap worldMap, int amount) {
         for (int i = 0; i < amount; i++) {
-            Predator predator = new Predator(2, 100, 100);
+            Predator predator = new Predator(1, 100, 100);
             worldMap.addEntityRandomCoordinates(predator);
         }
     }

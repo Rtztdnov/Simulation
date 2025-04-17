@@ -26,34 +26,35 @@ public class TurnAction extends Action {
         this.movement = new Movement(worldMap);
         this.initAction = initAction;
     }
-    public void turn (){
+
+    public void turn() {
         movement.moveEntities();
         removeCorpses();
         addMoreEntities();
     }
 
-    private void countingEntities (){
+    private void countingEntities() {
         Collection<Entity> entities = worldMap.getEntitiesMap().values();
         for (Entity entity : entities) {
             if (entity instanceof Predator) {
                 amountOfPredators++;
-            }else if (entity instanceof Prey){
+            } else if (entity instanceof Prey) {
                 amountOfPrey++;
-            }else if (entity instanceof Grass){
+            } else if (entity instanceof Grass) {
                 amountOfGrass++;
             }
         }
     }
 
-    private void addMoreEntities (){
+    private void addMoreEntities() {
         countingEntities();
-        if (amountOfPredators == 0){
+        if (amountOfPredators == 0) {
             predatorFactory(worldMap, initAction.getInitAmountOfPredators());
         }
-        if (amountOfPrey == 0){
+        if (amountOfPrey == 0) {
             preyFactory(worldMap, initAction.getInitAmountOfPrey());
         }
-        if (amountOfGrass == 0){
+        if (amountOfGrass == 0) {
             grassFactory(worldMap, initAction.getInitAmountOfGrass());
         }
         amountOfPredators = 0;
@@ -62,13 +63,13 @@ public class TurnAction extends Action {
 
     }
 
-    private void removeCorpses (){
+    private void removeCorpses() {
         Set<Coordinates> entitiesCoordinates = worldMap.getEntitiesMap().keySet();
         Iterator<Coordinates> iterator = entitiesCoordinates.iterator();
         while (iterator.hasNext()) {
             Coordinates coordinates = iterator.next();
-            if(worldMap.getEntitiesMap().get(coordinates) instanceof Damageable){
-                if (((Damageable)worldMap.getEntitiesMap().get(coordinates)).getHp() < 0){
+            if (worldMap.getEntitiesMap().get(coordinates) instanceof Damageable) {
+                if (((Damageable) worldMap.getEntitiesMap().get(coordinates)).getHp() <= 0) {
                     iterator.remove();
                 }
             }
