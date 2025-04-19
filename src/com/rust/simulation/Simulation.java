@@ -6,8 +6,8 @@ import com.rust.simulation.action.TurnAction;
 
 public class Simulation {
 
-    WorldMap worldMap = new WorldMap(10, 10);
-    InitAction initAction = new InitAction(worldMap, 1, 2, 3, 4);
+    WorldMap worldMap = new WorldMap(20, 10);
+    InitAction initAction = new InitAction(worldMap, 5, 10, 15, 8);
     TurnAction turnAction = new TurnAction(worldMap, initAction);
     Renderer renderer = new Renderer(worldMap);
     private volatile boolean running = true;
@@ -28,7 +28,6 @@ public class Simulation {
                 System.out.println("Поток прерван");
             }
             nextTurn(turnAction, worldMap, renderer);
-            System.out.println("RUN");
         }
     }
 

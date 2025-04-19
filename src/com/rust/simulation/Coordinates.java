@@ -30,7 +30,6 @@ public class Coordinates {
         return column == that.column && row == that.row;
     }
 
-
     @Override
     public int hashCode() {
         return Objects.hash(column, row);
@@ -40,15 +39,7 @@ public class Coordinates {
         return column;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
     public int getRow() {
         return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
     }
 }

@@ -7,7 +7,7 @@ public class Menu implements Runnable {
     Thread menuThread;
     Simulation simulation;
     private String title =
-            "**************\n" +
+                    "**************\n" +
                     "* SIMULATION *\n" +
                     "**************\n" +
                     "Добро пожалоать в СИМУЛЯЦИЮ, для остановки нажмите любую клавишу и ENTER.\n" +
@@ -59,7 +59,6 @@ public class Menu implements Runnable {
     }
 
     public void run() {
-        System.out.println("Steam is run");
         pause();
     }
 }

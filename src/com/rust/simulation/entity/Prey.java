@@ -24,18 +24,9 @@ public class Prey extends Creature {
     @Override
     public Coordinates getMove(Coordinates coordinates, WorldMap worldMap) {
 
-        BFSAlgorithm bfsAlgorithm = new BFSAlgorithm();
-        LinkedList<Coordinates> way = bfsAlgorithm.findTheWay(coordinates, worldMap, Grass.class);
+        BFSAlgorithm bfsAlgorithm = new BFSAlgorithm(worldMap);
+        LinkedList<Coordinates> way = bfsAlgorithm.findTheWay(coordinates, Grass.class);
 
         return moving(coordinates, way, worldMap);
-
-//        if (way.isEmpty()) {
-//            return coordinates;
-//        } else if ((way.size() == getSpeed() + 1) || (way.size() == 2)) {
-//            eating(way, worldMap);
-//            return coordinates;
-//        } else {
-//            return way.get(getSpeed());
-//        }
     }
 }

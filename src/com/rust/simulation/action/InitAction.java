@@ -42,7 +42,4 @@ public class InitAction extends Action {
         return initAmountOfGrass;
     }
 
-    public int getInitAmountOfRocks() {
-        return initAmountOfRocks;
-    }
 }

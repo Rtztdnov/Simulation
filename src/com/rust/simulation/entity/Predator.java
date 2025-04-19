@@ -24,8 +24,8 @@ public class Predator extends Creature {
     @Override
     public Coordinates getMove(Coordinates coordinates, WorldMap worldMap) {
 
-        BFSAlgorithm bfsAlgorithm = new BFSAlgorithm();
-        LinkedList<Coordinates> way = bfsAlgorithm.findTheWay(coordinates, worldMap, Prey.class);
+        BFSAlgorithm bfsAlgorithm = new BFSAlgorithm(worldMap);
+        LinkedList<Coordinates> way = bfsAlgorithm.findTheWay(coordinates, Prey.class);
 
         return moving(coordinates, way, worldMap);
     }

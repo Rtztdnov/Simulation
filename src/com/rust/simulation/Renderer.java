@@ -15,7 +15,6 @@ public class Renderer {
     private final String rockSprite = "\uD83E\uDEA8";
     private final String grassSprite = "\uD83C\uDF3E";
 
-
     public Renderer(WorldMap worldMap) {
         this.worldMap = worldMap;
         this.maxColumn = worldMap.getColumn();

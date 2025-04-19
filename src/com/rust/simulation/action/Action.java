@@ -1,6 +1,5 @@
 package com.rust.simulation.action;
 
-import com.rust.simulation.Coordinates;
 import com.rust.simulation.WorldMap;
 import com.rust.simulation.entity.*;
 

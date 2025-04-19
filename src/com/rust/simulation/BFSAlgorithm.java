@@ -6,7 +6,13 @@ import java.util.*;
 
 public class BFSAlgorithm {
 
-    public <Food> LinkedList<Coordinates> findTheWay(Coordinates firstCoordinate, WorldMap worldMap, Class<Food> food) {
+    WorldMap worldMap;
+
+    public BFSAlgorithm(WorldMap worldMap) {
+        this.worldMap = worldMap;
+    }
+
+    public <Food> LinkedList<Coordinates> findTheWay(Coordinates firstCoordinate, Class<Food> food) {
         HashMap<Coordinates, Entity> entitiesMap = worldMap.getEntitiesMap();
         Queue<Coordinates> queue = new LinkedList<>();
         Set<Coordinates> visited = new HashSet<>();
@@ -82,8 +88,8 @@ public class BFSAlgorithm {
     private boolean isInRange(Coordinates coordinates) {
         int column = coordinates.getColumn();
         int row = coordinates.getRow();
-        int maxColumn = WorldMap.column;
-        int maxRow = WorldMap.row;
+        int maxColumn = worldMap.getColumn();
+        int maxRow = worldMap.getRow();
         boolean inRange;
         if (1 <= column && column <= maxColumn && 1 <= row && row <= maxRow) {
             inRange = true;
