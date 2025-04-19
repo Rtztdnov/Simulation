@@ -42,28 +42,27 @@ public class WorldMap {
 
     public void addEntity(Entity entity, Coordinates coordinates) {
 
-        if (entity != null && coordinates != null) {
+        Objects.requireNonNull(entity, "Entity is Null");
+        Objects.requireNonNull(coordinates, "Coordinates is Null");
+
             if (!entitiesMap.containsKey(coordinates)) {
                 entitiesMap.put(coordinates, entity);
             } else {
                 throw new IllegalArgumentException("Invalid coordinates");
             }
-        } else {
-            throw new NullPointerException("Null value detected");
-        }
     }
 
     public void addEntityRandomCoordinates(Entity entity) {
         while (true) {
             Coordinates coordinates = new Coordinates().getRandomCoordinates(column, row);
-            if (entity != null && coordinates != null) {
+
+            Objects.requireNonNull(entity, "Entity is Null");
+            Objects.requireNonNull(coordinates, "Coordinates is Null");
+
                 if (!entitiesMap.containsKey(coordinates)) {
                     entitiesMap.put(coordinates, entity);
                     break;
                 }
-            } else {
-                throw new NullPointerException("Null value detected");
-            }
         }
     }
 
