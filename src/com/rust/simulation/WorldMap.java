@@ -6,8 +6,8 @@ import java.util.*;
 
 public class WorldMap {
 
-    public static int column;
-    public static int row;
+    public int column;
+    public int row;
     private HashMap<Coordinates, Entity> entitiesMap = new HashMap<>();
 
     public WorldMap(int column, int row) {
